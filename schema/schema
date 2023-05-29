@@ -1,0 +1,38 @@
+Table Movies {
+  imdbId varchar [primary key]
+  movieLabel varchar
+  duration decimal
+  director varchar [ref: > Directors.directorId]
+}
+
+Table Directors {
+  directorId integer [primary key, unique, increment]
+  directorLabel varchar
+}
+
+Table Genres {
+  genreId integer [primary key, unique, increment]
+  genreLabel varchar
+}
+
+Table Countries {
+  countryId integer [primary key, unique, increment]
+  countryLabel varchar
+  movie varchar [ref: < Movies.imdbId]
+}
+
+Table Cast {
+  castId integer [primary key, unique, increment]
+  castLabel varchar
+}
+
+Table Movie_Genre {
+  movieId varchar [ref: <> Movies.imdbId]
+  genreId integer [ref: <> Genres.genreId]
+}
+
+
+Table Movie_Cast {
+  movieId varchar [ref: <> Movies.imdbId]
+  castId integer [ref:  <> Cast.castId]
+}
