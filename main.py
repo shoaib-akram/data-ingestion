@@ -28,7 +28,7 @@ def main():
         # Obtain the database connection and cursor
         connection, cursor = create_db_connection()
         if not connection or not cursor:
-            logging.error("Exiting because couldn't connect to the DB")
+            logging.error("Exiting, couldn't connect to the DB")
             return
 
         create_database_schema(connection, cursor)
